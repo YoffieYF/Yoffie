@@ -10,7 +10,7 @@
 * (PS:个人觉得MVVM的框架设计模式就能适用比较大型的项目开发了，框架更多的是概念性的东西，它只是一种代码结构的设计模式。不管使用那种框架只要对代码的结构有着严格的管理就OK了。)
 
 ## 细说MVVM框架
-
+![blockchain](https://github.com/YoffieYF/Yoffie/blob/master/image/WechatIMG175.png "区块链")
 ## iOS(object-c)对MVVM框架的实现
 
 ## 
