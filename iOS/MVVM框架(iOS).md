@@ -11,7 +11,6 @@
 
 ## 细说MVVM框架
 ![image](https://github.com/YoffieYF/Yoffie/blob/master/image/WechatIMG175.png)
-
 * M(Model):数据模型层，用于数据模态化，所有的的Model都有一个基类BaseModel,BaseModel有对应的方法去进行数据持久化的操作。一般情况是一个api接口对应一个RequstModel与RespondModel。RequstModel与RespondModel分别继承于BaseModel。RequstModel用于存放api接口请求的json参数模型。RespondModel用于api接口返回的json数据模态话。同时RespondModel缓存对应数据的frame与富文本（PS：一些UI耗性能的frame计算与富文本计算）
 * V(View):视图层，用于控制控件的布局计算，配置数据绑定。
 * V(ViewController):视图转发器或者叫视图控制器，用于处理视图层的一些用户交互逻辑，数据的刷新，数据的请求，页面的跳转。
