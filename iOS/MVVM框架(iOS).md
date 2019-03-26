@@ -35,7 +35,7 @@
 <br>
 ### Categories目录
 此目录存放的是一些类扩展。如 NSString+Safe 字符串安全操作的类扩展。
-![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(Utils)目录结构.png)
+![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(Categories)目录结构.png)
 <br>
 ### MYCommon目录
 此目录存放的是一些团队开发的组件。如一些正则表达式。
