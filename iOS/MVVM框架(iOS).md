@@ -19,7 +19,10 @@
 
 ## iOS(object-c)对MVVM框架的实现
 * 总的目录结构
-![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM%E6%80%BB%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png)
+![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVMMVVM总目录结构.png)
+* AppDetegate目录
+此目录主要是存放一些项目启动的预加载操作，如通知注册，友盟注册，第三方微信登入注册，UIWind的初始化等一些操作。每个操作需要以类扩展的方式去实现。如:注册类的操作就会新建一个AppDetegate的类扩展文件，命名为AppDetegate+Register,在这个文件编写具体的代码。
+![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/AppDelegate文件结构.png)
 
 
 
