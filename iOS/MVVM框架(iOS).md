@@ -18,30 +18,30 @@
 * M(ViewModel):数据处理层，用于服务器的api接口请求，与将服务器返回的json转Model（即操作数据模态化）。
 
 ## iOS(object-c)对MVVM框架的实现
-###总的目录结构
-![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVMMVVM总目录结构.png)
+### 总的目录结构
+![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM总目录结构.png)
 
-###AppDetegate目录
+### AppDetegate目录
 此目录主要是存放一些项目启动的预加载操作，如通知注册，友盟注册，第三方微信登入注册，UIWind的初始化等一些操作。每个操作需要以类扩展的方式去实现。如:注册类的操作就会新建一个AppDetegate的类扩展文件，命名为AppDetegate+Register,在这个文件编写具体的代码。
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/AppDelegate文件结构.png)
 <br>
-###Macros目录
+### Macros目录
 此目录存放的是一些项目常用的宏定义，全局通知标志符定义，国际化语言定义。
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM宏定义目录.png)
 <br>
-###Utils目录
+### Utils目录
 此目录存放的是一些从其他地方引入的第三方组件。如一些正则表达式。
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(Utils)目录结构.png)
 <br>
-###Categories目录
+### Categories目录
 此目录存放的是一些类扩展。如 NSString+Safe 字符串安全操作的类扩展。
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(Utils)目录结构.png)
 <br>
-###MYCommon目录
+### MYCommon目录
 此目录存放的是一些团队开发的组件。如一些正则表达式。
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(MYCommon)目录结构.png)
 <br>
-###Class目录
+### Class目录
 Class目录主要是存放业务逻辑的实现代码。这个目录也是对MVVM模型的实现。分为了Common的目录与一些具体的业务逻辑目录。Common目录也可以把它看成通用模块，而业务逻辑目录也可以把它看成一个模块（那些业务逻辑会被独立成一个模块，需要根据当前的业务去划分）。此目录也是团队成员写入代码最多的目录。所以模块的划分与通用模块设计尤为重要。因此此模块会重点讲解，会为如下小节讲解:
 
 * MVVM(Class)目录结构
@@ -76,19 +76,19 @@ ResponseModel主要是定义数据返回的参数（如下图：）。
 MVVM(Class-Common-ViewModel)目录主要是实现api接口的请求。而common下的ViewModel是项目通用的请求操作，是所有业务模块的基类。如几个业务逻辑模块都会使用到同一个接口请求，那么这个请求操作就应该放在通用的ViewModel下。（如下图：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(Class-Common-ViewModel).png)
 
-###MVVM(Class-XXX-Model)目录
+### MVVM(Class-XXX-Model)目录
 MVVM(Class-XXX-Model)目录主要是独立业务逻辑模块的Model层。用于定义独立业务逻辑的api请求参数与返回参数。同时也可以缓存一些复杂UI的frame与对性能消耗大的操作。（如下图：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(Class-Home-Model).png)
 
-###MVVM(Class-XXX-View)目录
+### MVVM(Class-XXX-View)目录
 MVVM(Class-XXX-View)目录主要是独立业务逻辑模块的View层。用于定义一些控件视图的声明与位置，控件视图的交互回调。（如下图：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(Class-Home-View).png)
 
-###MVVM(Class-XXX-ViewController)目录
+### MVVM(Class-XXX-ViewController)目录
 MVVM(Class-XXX-ViewController)目录主要是独立业务逻辑模块的ViewController层。用于定义页面的跳转，与被其他业务模块使用的方法。（如下图：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(Class-Home-ViewController).png)
 
-###MVVM(Class-XXX-ViewModel)目录
+### MVVM(Class-XXX-ViewModel)目录
 MVVM(Class-XXX-ViewController)目录主要是独立业务逻辑模块的ViewModel层。用于api接口请求的操作，所有的ViewModel都是继承BaseViewModel,如果此业务有独立的请求操作需要单独声明。（如下图：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(Class-Home-ViewModel).png)
 ## 项目命名规则
