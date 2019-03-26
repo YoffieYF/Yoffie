@@ -91,5 +91,8 @@ MVVM(Class-XXX-ViewController)目录主要是独立业务逻辑模块的ViewCont
 ### MVVM(Class-XXX-ViewModel)目录
 MVVM(Class-XXX-ViewController)目录主要是独立业务逻辑模块的ViewModel层。用于api接口请求的操作，所有的ViewModel都是继承BaseViewModel,如果此业务有独立的请求操作需要单独声明。（如下图：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(Class-Home-ViewModel).png)
+
 ## 项目命名规则
+* 所有的文件名以MY开始,加上区别名。（MY:为一个项目名称的缩写,如app名称叫“微信”，那所有的新建文件都是以WXQxxx.h，Qxxx就是区别名)。即 MY+区别名.h
+* Model层命名规则：如：MYASgetUserInfoRequst.h  MYASysGetUserInfoResponse.h,这两个命名对应的是/api/Sys/getUserInfo的接口的请求Model与数据返回Model。即:MY+A+Sys+getUser+Model类型。
 
