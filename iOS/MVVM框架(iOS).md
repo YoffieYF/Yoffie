@@ -18,3 +18,9 @@
 * M(ViewModel):数据处理层，用于服务器的api接口请求，与将服务器返回的json转Model（即操作数据模态化）。
 
 ## iOS(object-c)对MVVM框架的实现
+* 总的目录结构
+
+
+
+
+
