@@ -92,7 +92,6 @@ MVVM(Class-XXX-ViewController)目录主要是独立业务逻辑模块的ViewCont
 MVVM(Class-XXX-ViewController)目录主要是独立业务逻辑模块的ViewModel层。用于api接口请求的操作，所有的ViewModel都是继承BaseViewModel,如果此业务有独立的请求操作需要单独声明。（如下图：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(Class-Home-ViewModel).png)
 
-------------------------------------------------------------------------------
 ## MVVM+路由(补充)
 ### 为什么要使用路由？
 路由的好处就是解耦，当项目发展到特别大的时候，业务逻辑之间的交互也会很多。加入路由机制能很好的解耦。(后面会说到这种机制的一些缺点)。
@@ -106,7 +105,7 @@ MVVM(Class-XXX-ViewController)目录主要是独立业务逻辑模块的ViewMode
 * 本模块调用其它模块的操作（如下：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM+路由2.png)
 ### 缺点
-因为使用到runtime机制,代码中路由的操作会出现很多的字符串，不利于代码的阅读。会出现代码的冗余，比如一个模块被删除了，之前使用到这个模块路由操作的代码不好删除。
+因为使用到runtime机制,代码中路由的操作会出现很多的字符串，不利于代码的阅读。会出现代码的冗余，比如一个模块被删除了，之前使用到这个模块路由操作的代码删除起来很麻烦，以至于这些代码会一直保留在项目中。
 
 
 ## 项目命名规则
