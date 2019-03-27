@@ -98,10 +98,9 @@ MVVM(Class-XXX-ViewController)目录主要是独立业务逻辑模块的ViewMode
 路由的好处就是解耦，当项目发展到特别大的时候，业务逻辑之间的交互也会很多。加入路由机制能很好的解耦。(后面会说到这种机制的一些缺点)。
 ### 路由是什么？
 路由是更像是一个本模块为其他模块提供的一个接口。本模块只需要提供一个路由接口层，其他模块根据路由接口层访问对应的操作。而路由接口层使用的是object-c的runtime机制，因此其他模块不需要import本模块的ViewController。就能实现页面的跳转，一些UI的显示操作。（如下图：）
-![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM+路由-流程图.png)
-### 代码实现
 * 模型流程图（如下：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM+路由-流程图.png)
+### 代码实现
 * 路由接口层实现（如下：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM+路由1.png)
 * 本模块调用其它模块的操作（如下：）
@@ -111,6 +110,8 @@ MVVM(Class-XXX-ViewController)目录主要是独立业务逻辑模块的ViewMode
 
 
 ## 项目命名规则
-* 所有的文件名以MY开始,加上区别名。（MY:为一个项目名称的缩写,如app名称叫“微信”，那所有的新建文件都是以WXQxxx.h，Qxxx就是区别名)。即 MY+区别名.h
+* 所有的文件名以MY开始,加上区别名，除了路由接口文件。（MY:为一个项目名称的缩写,如app名称叫“微信”，那所有的新建文件都是以WXQxxx.h，Qxxx就是区别名)。即 MY+区别名.h
 * Model层命名规则：如：MYASgetUserInfoRequst.h  MYASysGetUserInfoResponse.h,这两个命名对应的是/api/Sys/getUserInfo的接口的请求Model与数据返回Model。即:MY+A+Sys+getUser+Model类型。
+* 路由文件命名。Target_MYAdvertise.h 即： Target_+区别名.h
+* 路由函数命名。- (id)Action_showAdvertiseView:(NSDictionary *)params; 即：(返回类型)Action_+方法名:(NSDictionary *)params;
 
