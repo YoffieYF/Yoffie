@@ -1,5 +1,5 @@
 # MVVM框架(iOS)
-序语:个人从事iOS已经有5年了，接触的框架也有一些，使用最多的就是MVVM框架的代码结构，因此也对MVVM框架个人使用心得总结一下。(PS:本文不想涉及过多概念讲解，更多是项目结构的实现)
+序语:个人从事iOS已经有5年了，接触的框架也有一些，使用最多的就是MVVM框架的代码结构，因此也对MVVM框架个人使用心得总结一下。(PS:本文不想涉及过多概念讲解，更多是项目结构的实现,最后会补充一下“MVVM+路由”的实现机制)
 ## 为什么要使用框架组织代码
 随着开发的功能业务不断增多，代码的数量也在不断增加。开发团队也会不断的扩充，与人员的更换。那如何能高效的进行业务逻辑的开发呢？如何更好的进行团队协作呢？使用框架就是为了解决这些痛点的。
 ## iOS主流框架有那些
@@ -91,6 +91,24 @@ MVVM(Class-XXX-ViewController)目录主要是独立业务逻辑模块的ViewCont
 ### MVVM(Class-XXX-ViewModel)目录
 MVVM(Class-XXX-ViewController)目录主要是独立业务逻辑模块的ViewModel层。用于api接口请求的操作，所有的ViewModel都是继承BaseViewModel,如果此业务有独立的请求操作需要单独声明。（如下图：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM(Class-Home-ViewModel).png)
+
+------------------------------------------------------------------------------
+## MVVM+路由(补充)
+### 为什么要使用路由？
+路由的好处就是解耦，当项目发展到特别大的时候，业务逻辑之间的交互也会很多。加入路由机制能很好的解耦。(后面会说到这种机制的一些缺点)。
+### 路由是什么？
+路由是更像是一个本模块为其他模块提供的一个接口。本模块只需要提供一个路由接口层，其他模块根据路由接口层访问对应的操作。而路由接口层使用的是object-c的runtime机制，因此其他模块不需要import本模块的ViewController。就能实现页面的跳转，一些UI的显示操作。（如下图：）
+![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM+路由-流程图.png)
+### 代码实现
+* 模型流程图（如下：）
+![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM+路由-流程图.png)
+* 路由接口层实现（如下：）
+![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM+路由1.png)
+* 本模块调用其它模块的操作（如下：）
+![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM+路由2.png)
+### 缺点
+因为使用到runtime机制,代码中路由的操作会出现很多的字符串，不利于代码的阅读。会出现代码的冗余，比如一个模块被删除了，之前使用到这个模块路由操作的代码不好删除。
+
 
 ## 项目命名规则
 * 所有的文件名以MY开始,加上区别名。（MY:为一个项目名称的缩写,如app名称叫“微信”，那所有的新建文件都是以WXQxxx.h，Qxxx就是区别名)。即 MY+区别名.h
