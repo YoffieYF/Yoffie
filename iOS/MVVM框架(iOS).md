@@ -99,6 +99,7 @@ MVVM(Class-XXX-ViewController)目录主要是独立业务逻辑模块的ViewMode
 路由是更像是一个本模块为其他模块提供的一个接口。本模块只需要提供一个路由接口层，其他模块根据路由接口层访问对应的操作。而路由接口层使用的是object-c的runtime机制，因此其他模块不需要import本模块的ViewController。就能实现页面的跳转，一些UI的显示操作。（如下图：）
 * 模型流程图（如下：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM+路由-流程图.png)
+
 ### 代码实现
 * 路由接口层实现（如下：）
 ![image](https://raw.githubusercontent.com/YoffieYF/Yoffie/master/image/MVVM+路由1.png)
