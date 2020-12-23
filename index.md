@@ -12,4 +12,4 @@
 
 ## flutter随笔
 
-[flutter开发中发现的问题](https://yoffieyf.github.io/Yoffie/flutter/flutter开发中发现的问题.md)
+[flutter开发中发现的问题](https://yoffieyf.github.io/Yoffie/flutter/flutter开发中发现的问题)
