@@ -72,3 +72,91 @@ configurations {
     compile.exclude group: 'org.jetbrains', module: 'annotations'
 }
 ```
+
+## Android打包问题 (已解决)  
+
+使用 flutter build apk --release 打出来的的包，会出现点击相册
+crash。但是使用debug运行或者flutter run --release都不会出现问题。  
+加入“真机获取crash并保存crash信息到手机“的代码，打开手机crash文件。  
+报错信息如下：
+
+```dart
+SUPPORTED_64_BIT_ABIS=[Ljava.lang.String;@93ed4d3
+versionCode=1
+BOARD=unknown
+BOOTLOADER=unknown
+TYPE=user
+ID=MRA58K
+TIME=1528462997000
+BRAND=Xiaomi
+TAG=Build
+SERIAL=IJTCLZLBKFU8V8EY
+HARDWARE=mt6797
+SUPPORTED_ABIS=[Ljava.lang.String;@2cb1810
+CPU_ABI=arm64-v8a
+RADIO=unknown
+IS_DEBUGGABLE=false
+DISPLAY_TYPE=unknown
+MANUFACTURER=Xiaomi
+SUPPORTED_32_BIT_ABIS=[Ljava.lang.String;@156cf0d
+TAGS=release-keys
+CPU_ABI2=
+UNKNOWN=unknown
+USER=builder
+FINGERPRINT=Xiaomi/nikel/nikel:6.0/MRA58K/8.4.28:user/release-keys
+HOST=c3-miui-ota-bd04.bj
+PRODUCT=nikel
+versionName=1.0.0
+DISPLAY=MRA58K
+MODEL=Redmi Note 4
+DEVICE=nikel
+java.lang.AssertionError: java.lang.NoSuchMethodException: fromValue [int]
+	at b.f.a.h.b()
+	at b.f.a.h.a()
+	at b.f.a.a.a()
+	at b.f.a.a.a()
+	at com.opensource.svgaplayer.m.f$c.a()
+	at com.opensource.svgaplayer.m.f$c.a()
+	at com.opensource.svgaplayer.m.b$b.a()
+	at com.opensource.svgaplayer.m.b$b.a()
+	at com.opensource.svgaplayer.m.g$b.a()
+	at com.opensource.svgaplayer.m.g$b.a()
+	at com.opensource.svgaplayer.m.d$b.a()
+	at com.opensource.svgaplayer.m.d$b.a()
+	at b.f.a.e.a()
+	at b.f.a.e.a()
+	at com.opensource.svgaplayer.g$d.run()
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)
+	at java.lang.Thread.run(Thread.java:818)
+Caused by: java.lang.NoSuchMethodException: fromValue [int]
+	at java.lang.Class.getMethod(Class.java:624)
+	at java.lang.Class.getMethod(Class.java:603)
+	... 18 more
+java.lang.NoSuchMethodException: fromValue [int]
+	at java.lang.Class.getMethod(Class.java:624)
+	at java.lang.Class.getMethod(Class.java:603)
+	at b.f.a.h.b()
+	at b.f.a.h.a()
+	at b.f.a.a.a()
+	at b.f.a.a.a()
+	at com.opensource.svgaplayer.m.f$c.a()
+	at com.opensource.svgaplayer.m.f$c.a()
+	at com.opensource.svgaplayer.m.b$b.a()
+	at com.opensource.svgaplayer.m.b$b.a()
+	at com.opensource.svgaplayer.m.g$b.a()
+	at com.opensource.svgaplayer.m.g$b.a()
+	at com.opensource.svgaplayer.m.d$b.a()
+	at com.opensource.svgaplayer.m.d$b.a()
+	at b.f.a.e.a()
+	at b.f.a.e.a()
+	at com.opensource.svgaplayer.g$d.run()
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)
+	at java.lang.Thread.run(Thread.java:818)
+```
+
+初步分析是因为找不到svgaplayer的某个方法，其实这个方法是有的，而且在debug运行的时候是没问题，推测是因为安卓打包过程中会去压缩包体积，导致出现一些问题。 
+
+解决方案：  
+flutter build apk --release  --no-shrink 使用此命令不去压缩包体积，就没有问题了。为什么压缩会导致crash这个有待深入研究。
