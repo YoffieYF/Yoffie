@@ -160,3 +160,5 @@ java.lang.NoSuchMethodException: fromValue [int]
 
 解决方案：  
 flutter build apk --release  --no-shrink 使用此命令不去压缩包体积，就没有问题了。为什么压缩会导致crash这个有待深入研究。
+
+## Flutter与iOS原生数据交换的一些问题 

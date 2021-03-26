@@ -13,3 +13,4 @@
 ## flutter随笔  
 
 [flutter开发中发现的问题](https://yoffieyf.github.io/Yoffie/flutter/flutter开发中发现的问题)  
+[Flutter项目实现UI与逻辑分离](https://yoffieyf.github.io/Yoffie/flutter/flutter项目实现UI与逻辑分离)  
