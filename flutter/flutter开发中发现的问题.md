@@ -161,4 +161,43 @@ java.lang.NoSuchMethodException: fromValue [int]
 解决方案：  
 flutter build apk --release  --no-shrink 使用此命令不去压缩包体积，就没有问题了。为什么压缩会导致crash这个有待深入研究。
 
+## Dart中List的元素修改
+dart中如果list装的是一组对象，想要改list中的某一个对象，发现修改不了.
+```dart
+ class A {
+	String name;
+	A(this.name);
+ }
+
+ A a1 = A('name1');
+ A a2 = A('name2');
+ A a3 = A('name3');
+
+ List<A> list = [a1, a2, a3];
+ list[0].name = 'new_name1';
+```
+发现list[0].name不会有变化。
+
+解决方案:
+因为没有发现dart语法中没有clone对象的操作，所以只能自己写个copy方法
+```dart
+ class A {
+	String name;
+	A(this.name);
+
+	A.copyWith(A a) {
+		this.name = a.name;
+	}
+ }
+
+ A a1 = A('name1');
+ A a2 = A('name2');
+ A a3 = A('name3');
+
+ List<A> list = [a1, a2, a3];
+ A newA = A.copyWith(list[0]);
+ newA.name = 'new_name';
+ list[0] = newA;
+```
+
 ## Flutter与iOS原生数据交换的一些问题 
